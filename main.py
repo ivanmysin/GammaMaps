@@ -81,6 +81,8 @@ def get_rhytms_and_maps(filepath):
         for rhythm_idx, (rhythm_name, rhythm_range) in enumerate(rhythms_freqs_range.items()):
             lfp = electrode_values['lfp'].get(  gamma_max_channel_names[rhythm_name]['channel_name'] )
             lfp = np.asarray(lfp).astype(np.float32)
+
+            ###
             # lfp_without_tail = int((lfp.size//fs_for_map)*fs_for_map) #lfp_without_tail
             # lfp = lfp[:lfp_without_tail]
             range_lfp = lib.butter_bandpass_filter(lfp, rhythm_range[0], rhythm_range[1], fs_signal, 3)
